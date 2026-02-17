@@ -1,14 +1,16 @@
 import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import Laptop from "./Components/Laptop";
 
 export default function App() {
   return (
-    <Canvas camera={{ position: [2, 2, 5], fov: 30 }}>
+    <Canvas camera={{ position: [10, 3, 30], fov: 1 }}>
       <ambientLight intensity={1} />
-      <directionalLight position={[2, 4, 6]} intensity={1.5} castShadow />
-      <mesh>
-        <boxGeometry />
-        <meshStandardMaterial color="orange" />
-      </mesh>
+      <directionalLight position={[5, 10, 5]} intensity={2} />
+
+      <Laptop scale={0.01} />
+
+      <OrbitControls />
     </Canvas>
   );
 }
