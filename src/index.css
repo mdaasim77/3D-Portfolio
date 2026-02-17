@@ -11,3 +11,36 @@ body,
 canvas {
   display: block;
 }
+
+/* ========== StartScreen code =========== */
+
+.startScreen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 10;
+}
+
+.startScreen h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.startScreen p {
+  opacity: 0.7;
+}
+
+.startScreen button {
+  padding: 14px 28px;
+  font-size: 18px;
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
