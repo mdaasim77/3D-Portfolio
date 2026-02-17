@@ -1,12 +1,12 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, Stars } from "@react-three/drei";
 import Laptop from "./Components/Laptop";
-import StartScreen from "./Ui/StartScreen";
+// import StartScreen from "./Ui/StartScreen";
 
 export default function App() {
   return (
     <>
-      <StartScreen />
+      {/* <StartScreen /> */}
       <Canvas camera={{ position: [0, 5, 20], fov: 35 }}>
         <ambientLight intensity={0.3} />
         <directionalLight position={[20, 10, 20]} intensity={1.5} />
@@ -27,6 +27,7 @@ export default function App() {
           background
           backgroundIntensity={0.1}
           backgroundBlurriness={0.1}
+          
         />
 
         <Laptop scale={0.4} />
