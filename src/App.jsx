@@ -7,7 +7,7 @@ export default function App() {
       <directionalLight position={[2, 4, 6]} intensity={1.5} castShadow />
       <mesh>
         <boxGeometry />
-        <meshStandardMaterial color="orange" />
+        {/* <meshStandardMaterial color="orange" /> */}
       </mesh>
     </Canvas>
   );
