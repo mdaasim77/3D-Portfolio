@@ -15,7 +15,7 @@ export default function App() {
         <Stars
           radius={80}
           depth={50}
-          count={20000}
+          count={100000}
           factor={4}
           saturation={0}
           fade
@@ -27,7 +27,6 @@ export default function App() {
           background
           backgroundIntensity={0.1}
           backgroundBlurriness={0.1}
-          
         />
 
         <Laptop scale={0.4} />
