@@ -12,7 +12,7 @@ export default function App() {
         <directionalLight position={[20, 10, 20]} intensity={1.5} />
 
         {/* Moving star particles = depth */}
-        {/* <Stars
+        <Stars
           radius={80}
           depth={50}
           count={100000}
@@ -20,7 +20,7 @@ export default function App() {
           saturation={0}
           fade
           speed={1}
-        /> */}
+        />
 
         <Environment
           files="/src/assets/hdr/space.hdr"
