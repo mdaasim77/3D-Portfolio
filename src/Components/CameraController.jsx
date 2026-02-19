@@ -6,13 +6,13 @@ export default function CameraController({ start }) {
   const { camera } = useThree();
 
   // 👉 Where the laptop screen is (ONLY change this if laptop moves)
-  const lookX = 57;
+  const lookX = 60;
   const lookY = 2.2;
   const lookZ = 0;
 
   // Camera starts VERY close to screen
   useLayoutEffect(() => {
-    camera.position.set(55, 2, 2);
+    camera.position.set(60, 2, 2);
     camera.lookAt(lookX, lookY, lookZ);
   }, []);
 

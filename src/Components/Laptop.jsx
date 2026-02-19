@@ -7,7 +7,7 @@ export default function Laptop(props) {
     <primitive
       object={model.scene}
       scale={1}
-      position={[50, -2, 0]}
+      position={[10, -1.5, 0]}
       rotation={[0, -1.2, 0]} // slight angle toward camera
       {...props}
     />
