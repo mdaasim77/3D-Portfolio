@@ -7,7 +7,7 @@ export default function CameraController({ start }) {
 
   useEffect(() => {
     // IMPORTANT: align camera before animation
-    camera.lookAt(0, 2.5, 0);
+    camera.lookAt(-10, 2.5, 0);
 
     if (!start) return;
 

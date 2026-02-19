@@ -12,7 +12,7 @@ export default function App() {
     <>
       {!start && <StartScreen onStart={() => setStart(true)} />}
 
-      <Canvas camera={{ position: [0, 3, 90], fov: 45 }}>
+      <Canvas camera={{ position: [-25, 36, 90], fov: 45 }}>
         <CameraController start={start} />
 
         <ambientLight intensity={0.3} />
