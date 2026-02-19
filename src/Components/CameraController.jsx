@@ -6,6 +6,9 @@ export default function CameraController({ start }) {
   const { camera } = useThree();
 
   useEffect(() => {
+    // IMPORTANT: align camera before animation
+    camera.lookAt(0, 2.5, 0);
+
     if (!start) return;
 
     gsap.to(camera.position, {

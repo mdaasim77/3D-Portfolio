@@ -40,7 +40,7 @@ export default function App() {
         {/* Disable controls after start */}
         {!start && (
           <OrbitControls
-            target={[30, 10, 30]}
+            target={[0, 2.5, 0]}
             enablePan={false}
             minDistance={5}
             maxDistance={70}
