@@ -10,11 +10,11 @@ export default function CameraController({ start }) {
 
     gsap.to(camera.position, {
       x: 0,
-      y: 1.6,
-      z: 3,
-      duration: 3,
+      y: 2,
+      z: 2,
+      duration: 5,
       ease: "power3.inOut",
-      onUpdate: () => camera.lookAt(0, 0, 0),
+      onUpdate: () => camera.lookAt(0, 2.5, 0),
     });
   }, [start]);
 

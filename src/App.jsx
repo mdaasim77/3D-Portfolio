@@ -12,7 +12,7 @@ export default function App() {
     <>
       {!start && <StartScreen onStart={() => setStart(true)} />}
 
-      <Canvas camera={{ position: [0, 5, 20], fov: 35 }}>
+      <Canvas camera={{ position: [0, 3, 90], fov: 45 }}>
         <CameraController start={start} />
 
         <ambientLight intensity={0.3} />
@@ -40,10 +40,10 @@ export default function App() {
         {/* Disable controls after start */}
         {!start && (
           <OrbitControls
-            target={[0, 4, 0]}
+            target={[30, 10, 30]}
             enablePan={false}
             minDistance={5}
-            maxDistance={25}
+            maxDistance={70}
           />
         )}
       </Canvas>
