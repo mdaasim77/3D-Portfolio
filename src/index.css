@@ -86,3 +86,44 @@ canvas {
   border: none;
   cursor: pointer;
 }
+
+
+
+/* ========== Hero section code ========== */
+
+.hero {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.heroLeft {
+  width: 40%;
+  margin-left: 6vw;
+  color: white;
+  pointer-events: auto;
+}
+
+.heroLeft h1 {
+  font-size: 64px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.heroLeft p {
+  font-size: 18px;
+  opacity: 0.75;
+  max-width: 420px;
+}
+
+.heroBtn {
+  margin-top: 30px;
+  padding: 14px 32px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}

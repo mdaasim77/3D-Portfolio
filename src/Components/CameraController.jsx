@@ -6,18 +6,17 @@ export default function CameraController({ start }) {
   const { camera } = useThree();
 
   useEffect(() => {
-    // IMPORTANT: align camera before animation
-    camera.lookAt(-10, 2.5, 0);
+    camera.lookAt(18, 2.5, 0); // look at laptop new position
 
     if (!start) return;
 
     gsap.to(camera.position, {
-      x: 0,
-      y: 2,
-      z: 2,
+      x: 10,
+      y: 6,
+      z: 18,
       duration: 5,
       ease: "power3.inOut",
-      onUpdate: () => camera.lookAt(0, 2.5, 0),
+      onUpdate: () => camera.lookAt(18, 2.5, 0),
     });
   }, [start]);
 

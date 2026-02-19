@@ -4,6 +4,7 @@ import Laptop from "./Components/Laptop";
 import StartScreen from "./Ui/StartScreen";
 import { useState } from "react";
 import CameraController from "./Components/CameraController";
+import Hero from "./Ui/Hero";
 
 export default function App() {
   const [start, setStart] = useState(false);
@@ -11,8 +12,8 @@ export default function App() {
   return (
     <>
       {!start && <StartScreen onStart={() => setStart(true)} />}
-
-      <Canvas camera={{ position: [-25, 36, 90], fov: 45 }}>
+      {start && <Hero />}
+      <Canvas camera={{ position: [0, 36, 90], fov: 45 }}>
         <CameraController start={start} />
 
         <ambientLight intensity={0.3} />
@@ -40,7 +41,7 @@ export default function App() {
         {/* Disable controls after start */}
         {!start && (
           <OrbitControls
-            target={[0, 2.5, 0]}
+            target={[0, 2.5, 90]}
             enablePan={false}
             minDistance={5}
             maxDistance={70}
