@@ -7,13 +7,16 @@ export default function StartScreen({ onStart }) {
   const contentRef = useRef();
 
   const handleStart = () => {
-    // fade text first
+    // Start 3D scene immediately
+    onStart();
+
+    // Fade intro text
     gsap.to(contentRef.current, {
       opacity: 0,
-      duration: 0.5,
+      duration: 0.4,
     });
 
-    // split panels
+    // Doors open ON TOP of the scene
     gsap.to(leftRef.current, {
       x: "-100%",
       duration: 1.5,
@@ -24,7 +27,6 @@ export default function StartScreen({ onStart }) {
       x: "100%",
       duration: 1.5,
       ease: "power4.inOut",
-      onComplete: onStart, // start camera after doors open
     });
   };
 

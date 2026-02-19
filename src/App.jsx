@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Environment, Stars } from "@react-three/drei";
+import { Environment, Stars } from "@react-three/drei";
 import Laptop from "./Components/Laptop";
 import StartScreen from "./Ui/StartScreen";
 import { useState } from "react";
@@ -11,9 +11,13 @@ export default function App() {
 
   return (
     <>
+      {/* Start screen curtain */}
       {!start && <StartScreen onStart={() => setStart(true)} />}
+
+      {/* Hero text appears AFTER camera finishes */}
       {start && <Hero />}
-      <Canvas camera={{ position: [0, 36, 90], fov: 45 }}>
+
+      <Canvas camera={{ position: [18, 36, 90], fov: 80 }}>
         <CameraController start={start} />
 
         <ambientLight intensity={0.3} />
@@ -36,17 +40,7 @@ export default function App() {
           backgroundBlurriness={0.1}
         />
 
-        <Laptop scale={0.4} />
-
-        {/* Disable controls after start */}
-        {!start && (
-          <OrbitControls
-            target={[0, 2.5, 90]}
-            enablePan={false}
-            minDistance={5}
-            maxDistance={70}
-          />
-        )}
+        <Laptop />
       </Canvas>
     </>
   );
