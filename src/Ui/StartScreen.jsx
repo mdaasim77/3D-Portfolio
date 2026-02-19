@@ -1,9 +1,9 @@
-export default function StartScreen() {
+export default function StartScreen({ onStart }) {
   return (
     <div className="startScreen">
       <h1>My 3D Portfolio</h1>
       <p>Creative Developer Experience</p>
-      <button>Start Experience</button>
+      <button onClick={onStart}>Start Experience</button>
     </div>
   );
 }
