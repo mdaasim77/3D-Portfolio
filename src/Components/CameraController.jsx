@@ -6,13 +6,13 @@ export default function CameraController({ start }) {
   const { camera } = useThree();
 
   // 👉 Where the laptop screen is (ONLY change this if laptop moves)
-  const lookX = 60;
-  const lookY = 2.2;
+  const lookX = 52;
+  const lookY =2;
   const lookZ = 0;
 
   // Camera starts VERY close to screen
   useLayoutEffect(() => {
-    camera.position.set(60, 2, 2);
+    camera.position.set(10, 5, 80);
     camera.lookAt(lookX, lookY, lookZ);
   }, []);
 
@@ -21,12 +21,12 @@ export default function CameraController({ start }) {
     if (!start) return;
 
     gsap.to(camera.position, {
-      x: -2,
-      y: 6,
-      z: 18,
+      x: 50,
+      y: 2,
+      z: 4,
       duration: 6,
       ease: "power3.inOut",
-      onUpdate: () => camera.lookAt(lookX + x, lookY, lookZ),
+      onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
     });
   }, [start]);
 
