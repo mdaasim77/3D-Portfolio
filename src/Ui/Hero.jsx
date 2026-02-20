@@ -11,9 +11,8 @@ export default function Hero() {
       {
         y: 0,
         opacity: 1,
-        duration: 1.8,
+        duration: 1.6,
         ease: "power3.out",
-        delay: 1.2,
       },
     );
   }, []);

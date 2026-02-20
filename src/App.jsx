@@ -8,17 +8,20 @@ import Hero from "./Ui/Hero";
 
 export default function App() {
   const [start, setStart] = useState(false);
+  const [cameraDone, setCameraDone] = useState(false);
 
   return (
     <>
-      {/* Start screen curtain */}
       {!start && <StartScreen onStart={() => setStart(true)} />}
 
-      {/* Hero text appears AFTER camera finishes */}
-      {start && <Hero />}
+      {/* Hero appears ONLY after camera finishes */}
+      {cameraDone && <Hero />}
 
       <Canvas camera={{ position: [50, 36, 45], fov: 40 }}>
-        <CameraController start={start} />
+        <CameraController
+          start={start}
+          onComplete={() => setCameraDone(true)}
+        />
 
         <ambientLight intensity={0.3} />
         <directionalLight position={[20, 10, 20]} intensity={1.5} />
