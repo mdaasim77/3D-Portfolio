@@ -7,7 +7,7 @@ export default function CameraController({ start }) {
 
   // 👉 Where the laptop screen is (ONLY change this if laptop moves)
   const lookX = 52;
-  const lookY =2;
+  const lookY = 2;
   const lookZ = 0;
 
   // Camera starts VERY close to screen
@@ -20,11 +20,12 @@ export default function CameraController({ start }) {
   useEffect(() => {
     if (!start) return;
 
-    gsap.from(camera.position, {
+    gsap.to(camera.position, {
       x: 50,
       y: 2,
       z: 4,
       duration: 6,
+      delay: 0.4,
       ease: "power3.inOut",
       onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
     });

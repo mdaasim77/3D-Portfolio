@@ -5,13 +5,17 @@ export default function Hero() {
   const ref = useRef();
 
   useEffect(() => {
-    gsap.from(ref.current, {
-      y: -120,
-      opacity: 0,
-      duration: 1.5,
-      ease: "power3.out",
-      delay: 1.2, // wait until zoom nearly done
-    });
+    gsap.fromTo(
+      ref.current,
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.8,
+        ease: "power3.out",
+        delay: 1.2,
+      },
+    );
   }, []);
 
   return (

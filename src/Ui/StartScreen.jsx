@@ -6,29 +6,28 @@ export default function StartScreen({ onStart }) {
   const rightRef = useRef();
   const contentRef = useRef();
 
-  const handleStart = () => {
-    // Start 3D scene immediately
-    onStart();
+ const handleStart = () => {
+  // fade intro text first
+  gsap.to(contentRef.current, {
+    opacity: 0,
+    duration: 0.4,
+  });
 
-    // Fade intro text
-    gsap.to(contentRef.current, {
-      opacity: 0,
-      duration: 0.4,
-    });
+  // doors open
+  gsap.to(leftRef.current, {
+    x: "-100%",
+    duration: 1.6,
+    ease: "power4.inOut",
+  });
 
-    // Doors open ON TOP of the scene
-    gsap.to(leftRef.current, {
-      x: "-100%",
-      duration: 1.5,
-      ease: "power4.inOut",
-    });
+  gsap.to(rightRef.current, {
+    x: "100%",
+    duration: 1.6,
+    ease: "power4.inOut",
+    onComplete: onStart, // start scene AFTER doors open
+  });
+};
 
-    gsap.to(rightRef.current, {
-      x: "100%",
-      duration: 1.5,
-      ease: "power4.inOut",
-    });
-  };
 
   return (
     <div className="startWrapper">

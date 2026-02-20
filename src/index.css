@@ -109,12 +109,14 @@ canvas {
   font-size: 64px;
   line-height: 1.1;
   margin-bottom: 20px;
+  color: black;
 }
 
 .heroLeft p {
   font-size: 18px;
   opacity: 0.75;
   max-width: 420px;
+  color: black;
 }
 
 .heroBtn {
