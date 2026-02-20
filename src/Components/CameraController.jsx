@@ -20,7 +20,7 @@ export default function CameraController({ start }) {
   useEffect(() => {
     if (!start) return;
 
-    gsap.to(camera.position, {
+    gsap.from(camera.position, {
       x: 50,
       y: 2,
       z: 4,

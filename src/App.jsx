@@ -17,7 +17,7 @@ export default function App() {
       {/* Hero text appears AFTER camera finishes */}
       {start && <Hero />}
 
-      <Canvas camera={{ position: [50, 36, 40], fov: 40 }}>
+      <Canvas camera={{ position: [50, 36, 45], fov: 40 }}>
         <CameraController start={start} />
 
         <ambientLight intensity={0.3} />
