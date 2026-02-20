@@ -88,7 +88,7 @@ canvas {
 }
 
 /* ========== Hero section code ========== */
-
+/* 
 .hero {
   position: fixed;
   inset: 0;
@@ -126,4 +126,55 @@ canvas {
   border: none;
   cursor: pointer;
   font-size: 16px;
+}
+ */
+
+/* HERO FULL WIDTH LAYOUT */
+
+.hero {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 6vh;
+  pointer-events: none;
+}
+
+/* big title across screen */
+.heroTitle {
+  font-size: 72px;
+  color: white;
+  text-align: center;
+  max-width: 1000px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  pointer-events: none;
+}
+
+/* subtitle */
+.heroSub {
+  color: white;
+  opacity: 0.85;
+  font-size: 20px;
+  text-align: center;
+  max-width: 700px;
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+/* button under laptop */
+.heroBtn {
+  position: fixed;
+  bottom: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 38px;
+  font-size: 18px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
 }

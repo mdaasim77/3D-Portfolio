@@ -8,7 +8,7 @@ export default function Laptop(props) {
   return (
     <primitive
       object={model.scene}
-      scale={0.4}
+      scale={0.5}
       position={[52.2, -2.3, 0]}
       rotation={[0, -0.44, 0]}
       {...props}

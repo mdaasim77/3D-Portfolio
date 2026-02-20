@@ -14,7 +14,8 @@ export default function App() {
   return (
     <>
       {!start && <StartScreen onStart={() => setStart(true)} />}
-      {cameraDone && <Hero onExplore={() => setExplore(true)} />}
+      {/* {cameraDone && <Hero onExplore={() => setExplore(true)} />} */}
+      {start && <Hero onExplore={() => setExplore(true)} />}
 
       <Canvas camera={{ position: [50, 36, 45], fov: 40 }}>
         <CameraController
