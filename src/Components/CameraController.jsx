@@ -1,6 +1,6 @@
 import { useThree } from "@react-three/fiber";
 import { useLayoutEffect, useEffect } from "react";
-// import gsap from "gsap";
+import gsap from "gsap";
 
 export default function CameraController({ start, explore, onComplete }) {
   const { camera } = useThree();
