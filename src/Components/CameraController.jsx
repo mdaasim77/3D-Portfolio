@@ -1,6 +1,6 @@
 import { useThree } from "@react-three/fiber";
 import { useLayoutEffect, useEffect } from "react";
-import gsap from "gsap";
+// import gsap from "gsap";
 
 export default function CameraController({ start, explore, onComplete }) {
   const { camera } = useThree();
@@ -28,7 +28,6 @@ export default function CameraController({ start, explore, onComplete }) {
       onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
       onComplete: onComplete,
     });
-    
   }, [start]);
 
   // 🔹 Explore button → fly BACK to laptop screen
