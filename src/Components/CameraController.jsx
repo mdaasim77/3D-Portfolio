@@ -19,15 +19,15 @@ export default function CameraController({ start, explore, onComplete }) {
   useEffect(() => {
     if (!start) return;
 
-    gsap.to(camera.position, {
-      x: 10,
-      y: 10,
-      z: 80,
-      duration: 6,
-      ease: "power3.inOut",
-      onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
-      onComplete: onComplete,
-    });
+    // gsap.to(camera.position, {
+    //   x: 10,
+    //   y: 10,
+    //   z: 80,
+    //   duration: 6,
+    //   ease: "power3.inOut",
+    //   onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
+    //   onComplete: onComplete,
+    // });
     
   }, [start]);
 
