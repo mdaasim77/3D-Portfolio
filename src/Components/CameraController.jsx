@@ -1,8 +1,12 @@
 import { useThree } from "@react-three/fiber";
 import { useLayoutEffect, useEffect } from "react";
 import gsap from "gsap";
-
-export default function CameraController({ start, explore, onComplete }) {
+export default function CameraController({
+  start,
+  explore,
+  onComplete,
+  focusLaptop,
+}) {
   const { camera } = useThree();
 
   const lookX = 52;
@@ -17,18 +21,17 @@ export default function CameraController({ start, explore, onComplete }) {
 
   // 🔹 Start button → fly OUT to space
   useEffect(() => {
-    if (!start) return;
+    if (!focusLaptop) return;
 
     gsap.to(camera.position, {
-      x: 10,
-      y: 10,
-      z: 80,
-      duration: 6,
+      x: 50,
+      y: 2,
+      z: 4, // same as intro position (screen fills browser)
+      duration: 2.5,
       ease: "power3.inOut",
-      onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
-      onComplete: onComplete,
+      onUpdate: () => camera.lookAt(52, 2, 0),
     });
-  }, [start]);
+  }, [focusLaptop]);
 
   // 🔹 Explore button → fly BACK to laptop screen
   useEffect(() => {

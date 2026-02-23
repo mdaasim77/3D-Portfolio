@@ -23,6 +23,7 @@ export default function App() {
         <CameraController
           start={start}
           explore={explore}
+          focusLaptop={focusLaptop}
           onComplete={() => setCameraDone(true)}
         />
 
