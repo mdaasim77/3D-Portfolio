@@ -10,13 +10,15 @@ export default function App() {
   const [start, setStart] = useState(false);
   const [cameraDone, setCameraDone] = useState(false);
   const [explore, setExplore] = useState(false);
+  const [focusLaptop, setFocusLaptop] = useState(false);
 
   return (
     <>
       {!start && <StartScreen onStart={() => setStart(true)} />}
       {/* {cameraDone && <Hero onExplore={() => setExplore(true)} />} */}
-      {start && <Hero onExplore={() => setExplore(true)} />}
-
+      {start && !explore && !focusLaptop && (
+        <Hero onExplore={() => setExplore(true)} />
+      )}
       <Canvas camera={{ position: [50, 36, 45], fov: 40 }}>
         <CameraController
           start={start}
@@ -44,7 +46,7 @@ export default function App() {
           backgroundBlurriness={0.1}
         />
 
-        <Laptop />
+        <Laptop onLaptopClick={() => setFocusLaptop(true)} />
 
         {/* enable mouse control only after explore */}
         {explore && (
