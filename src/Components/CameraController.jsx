@@ -10,7 +10,7 @@ export default function CameraController({
 }) {
   const { camera } = useThree();
 
-  // 🎯 Laptop screen target (ONLY change if laptop moves)
+  //  Laptop screen target (ONLY change if laptop moves)
   const lookX = 52;
   const lookY = 2;
   const lookZ = 0;

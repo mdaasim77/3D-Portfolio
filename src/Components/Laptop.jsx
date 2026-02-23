@@ -1,5 +1,3 @@
-
-
 import { useGLTF } from "@react-three/drei";
 import { useState } from "react";
 

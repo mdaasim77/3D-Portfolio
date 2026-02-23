@@ -47,7 +47,7 @@ export default function Hero({ onExplore }) {
   }, []);
 
   const handleExplore = () => {
-    // 🔴 stop floating when clicked
+    // stop floating when clicked
     floatAnim.current?.kill();
     onExplore();
   };
