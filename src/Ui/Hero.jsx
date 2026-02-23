@@ -5,6 +5,7 @@ export default function Hero({ onExplore }) {
   const titleRef = useRef();
   const subRef = useRef();
   const btnRef = useRef();
+  const floatAnim = useRef();
 
   useEffect(() => {
     // Title drop
@@ -14,21 +15,42 @@ export default function Hero({ onExplore }) {
       { y: 0, opacity: 1, duration: 1.6, ease: "power3.out", delay: 2.8 },
     );
 
-    // Paragraph fade + slight drop
-
+    // Subtitle fade
     gsap.fromTo(
       subRef.current,
       { y: -40, opacity: 0 },
       { y: 0, opacity: 1, duration: 1.6, ease: "power3.out", delay: 3.2 },
     );
 
-    // Button rise
+    // Button appear
     gsap.fromTo(
       btnRef.current,
       { y: 80, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.6, ease: "power3.out", delay: 3.6 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.6,
+        ease: "power3.out",
+        delay: 3.6,
+        onComplete: () => {
+          // 🔵 start floating loop AFTER appear animation
+          floatAnim.current = gsap.to(btnRef.current, {
+            y: "+=15",
+            duration: 1.5,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+          });
+        },
+      },
     );
   }, []);
+
+  const handleExplore = () => {
+    // 🔴 stop floating when clicked
+    floatAnim.current?.kill();
+    onExplore();
+  };
 
   return (
     <section className="hero">
@@ -41,7 +63,7 @@ export default function Hero({ onExplore }) {
         faster.
       </p>
 
-      <button ref={btnRef} className="heroBtn" onClick={onExplore}>
+      <button ref={btnRef} className="heroBtn" onClick={handleExplore}>
         Explore Space
       </button>
     </section>
