@@ -23,6 +23,10 @@ export default function Laptop({ onLaptopClick }) {
   );
 }
 
+// =============================================
+// try to flaot laptop but fixed position when close
+// =============================================
+
 // import { useGLTF } from "@react-three/drei";
 // import { useRef } from "react";
 // import { useFrame } from "@react-three/fiber";
