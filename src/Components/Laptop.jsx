@@ -2,7 +2,7 @@ import { useGLTF } from "@react-three/drei";
 import { useState } from "react";
 
 export default function Laptop({ onLaptopClick }) {
-  const model = useGLTF("/src/assets/models/laptop.glb");
+  // const model = useGLTF("/src/assets/models/laptop.glb");
   const [hovered, setHovered] = useState(false);
 
   return (
