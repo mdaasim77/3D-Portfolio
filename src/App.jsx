@@ -47,8 +47,11 @@ export default function App() {
           backgroundBlurriness={0.1}
         />
 
-        <Laptop onLaptopClick={() => setFocusLaptop(true)} />
-
+        {/* <Laptop onLaptopClick={() => setFocusLaptop(true)} /> */}
+        <Laptop
+          focusLaptop={focusLaptop}
+          onLaptopClick={() => setFocusLaptop(true)}
+        />
         {/* enable mouse control only after explore */}
         {explore && (
           <OrbitControls
