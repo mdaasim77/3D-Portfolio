@@ -12,7 +12,7 @@ export default function LaptopScreen({ focusLaptop }) {
 
     const timer = setTimeout(() => {
       setShowScreen(true);
-    }, 2000); 
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [focusLaptop]);
@@ -24,9 +24,6 @@ export default function LaptopScreen({ focusLaptop }) {
       transform
       occlude
       distanceFactor={1.17}
-      //   position={[0, 4.55, -0.42]}
-      //   rotation={[-0.32, 0, 0]}
-
       position={[52.2, 2.25, -0.05]}
       rotation={[0, -0.44, 0]}
     >
