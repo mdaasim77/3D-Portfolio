@@ -12,7 +12,7 @@ export default function LaptopScreen({ focusLaptop }) {
 
     const timer = setTimeout(() => {
       setShowScreen(true);
-    }, 2000); // 🔥 1 second delay
+    }, 2000); 
 
     return () => clearTimeout(timer);
   }, [focusLaptop]);
