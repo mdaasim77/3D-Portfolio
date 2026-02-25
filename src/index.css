@@ -87,7 +87,6 @@ canvas {
   cursor: pointer;
 }
 
-
 /* HERO FULL WIDTH LAYOUT */
 
 .hero {
@@ -136,4 +135,19 @@ canvas {
   border: none;
   cursor: pointer;
   pointer-events: auto;
+}
+
+/* Laptop screeen */
+
+.screen {
+  width: 1024px;
+  height: 640px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #000;
 }

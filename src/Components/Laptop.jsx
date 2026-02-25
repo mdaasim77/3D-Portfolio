@@ -1,6 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import LaptopScreen from "../Ui/LaptopScreen";
 
 export default function Laptop({ onLaptopClick, focusLaptop }) {
   const model = useGLTF("/src/assets/models/laptop.glb");
@@ -40,4 +41,5 @@ export default function Laptop({ onLaptopClick, focusLaptop }) {
       onPointerLeave={() => (document.body.style.cursor = "default")}
     />
   );
+  <LaptopScreen focusLaptop={focusLaptop} />;
 }

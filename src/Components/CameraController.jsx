@@ -35,7 +35,7 @@ export default function CameraController({
       x: 10,
       y: 10,
       z: 80,
-      duration: 6,
+      duration: 5,
       ease: "power3.inOut",
       onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
       onComplete: onComplete,
