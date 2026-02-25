@@ -22,8 +22,7 @@ export default function Laptop({ onLaptopClick, focusLaptop }) {
     // floating animation
     laptopRef.current.position.y = basePosition[1] + Math.sin(t) * 0.4;
     laptopRef.current.position.x = basePosition[0] + Math.sin(t * 0.5) * 1.2;
-    laptopRef.current.rotation.y =
-      baseRotation[1] + Math.sin(t * 0.6) * 0.15;
+    laptopRef.current.rotation.y = baseRotation[1] + Math.sin(t * 0.6) * 0.15;
     laptopRef.current.rotation.z = Math.sin(t * 0.4) * 0.05;
   });
 
