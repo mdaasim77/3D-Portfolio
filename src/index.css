@@ -5,7 +5,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 canvas {
@@ -154,7 +154,7 @@ canvas {
 
 /* =============== */
 
-.websiteOverlay {
+/* .websiteOverlay {
   position: fixed;
   inset: 0;
   background: white;
@@ -163,6 +163,14 @@ canvas {
   justify-content: center;
   align-items: center;
   animation: fadeIn 0.8s ease;
+} */
+.websiteOverlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 999;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @keyframes fadeIn {
@@ -178,69 +186,58 @@ canvas {
 
 .website {
   width: 100vw;
-  background: #0b0b0b;
+  background: #e9dcdc;
   color: white;
   font-family: sans-serif;
 }
 
-.sec {
+/* ======website.jsx code======= */
+
+.website {
+  background: black;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+/* 
+.frame {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* section styles */
-
-.heroSec {
-  background: #0b0b0b;
-}
-
-.darkSec {
-  background: #111;
-}
-
-.outroSec {
-  background: #0b0b0b;
-}
-
-.heroText {
-  font-size: 80px;
   text-align: center;
+  padding: 0 40px;
+} */
+.frame {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.content {
   max-width: 900px;
 }
 
-.bigText {
-  font-size: 100px;
-  text-align: center;
-  max-width: 1100px;
+.content h1 {
+  font-size: 80px;
+  margin-bottom: 30px;
+  font-weight: 600;
 }
 
-/* horizontal scroll section */
-
-.horizontalSec {
-  height: 100vh;
-  overflow: hidden;
+.content p {
+  font-size: 24px;
+  opacity: 0.8;
+  line-height: 1.6;
 }
 
-.horizontalWrapper {
-  display: flex;
-  height: 100vh;
+.finalFrame h1 {
+  font-size: 50px;
+  opacity: 0.8;
 }
 
-.panel {
-  min-width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 60px;
-  background: #181818;
-  border-right: 1px solid #333;
-}
-.websiteOverlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  overflow-y: auto;
+.finalFrame p {
+  font-size: 90px;
+  font-weight: 700;
 }
