@@ -53,7 +53,15 @@ export default function App() {
           onLaptopClick={() => setFocusLaptop(true)}
         />
         {/* enable mouse control only after explore */}
-        {explore && (
+        {/* {explore && (
+          <OrbitControls
+            target={[52, 2, 0]}
+            enablePan={false}
+            minDistance={5}
+            maxDistance={120}
+          />
+        )} */}
+        {explore && !focusLaptop && (
           <OrbitControls
             target={[52, 2, 0]}
             enablePan={false}
