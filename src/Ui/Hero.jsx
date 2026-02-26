@@ -69,3 +69,4 @@ export default function Hero({ onExplore }) {
     </section>
   );
 }
+

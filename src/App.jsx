@@ -26,7 +26,7 @@ export default function App() {
 
       {/* FULLSCREEN WEBSITE */}
       {enterWebsite && (
-        <div className="websiteOverlay" style={{ backgroundColor: "yellow" }}>
+        <div className="websiteOverlay" style={{ backgroundColor: "#323131" }}>
           <h1 style={{ backgroundColor: "red" }}>REAL WEBSITE GOES HERE</h1>
         </div>
       )}
