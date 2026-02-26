@@ -174,3 +174,73 @@ canvas {
   }
 }
 
+/* ===== WEBSITE OVERLAY ===== */
+
+.website {
+  width: 100vw;
+  background: #0b0b0b;
+  color: white;
+  font-family: sans-serif;
+}
+
+.sec {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* section styles */
+
+.heroSec {
+  background: #0b0b0b;
+}
+
+.darkSec {
+  background: #111;
+}
+
+.outroSec {
+  background: #0b0b0b;
+}
+
+.heroText {
+  font-size: 80px;
+  text-align: center;
+  max-width: 900px;
+}
+
+.bigText {
+  font-size: 100px;
+  text-align: center;
+  max-width: 1100px;
+}
+
+/* horizontal scroll section */
+
+.horizontalSec {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.horizontalWrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.panel {
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  background: #181818;
+  border-right: 1px solid #333;
+}
+.websiteOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  overflow-y: auto;
+}

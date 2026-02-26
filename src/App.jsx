@@ -5,6 +5,7 @@ import StartScreen from "./Ui/StartScreen";
 import { useState, useEffect } from "react";
 import CameraController from "./Components/CameraController";
 import Hero from "./Ui/Hero";
+import Website from "./Scenes/Website";
 
 export default function App() {
   const [start, setStart] = useState(false);
@@ -26,8 +27,8 @@ export default function App() {
 
       {/* FULLSCREEN WEBSITE */}
       {enterWebsite && (
-        <div className="websiteOverlay" style={{ backgroundColor: "#323131" }}>
-          <h1 style={{ backgroundColor: "red" }}>REAL WEBSITE GOES HERE</h1>
+        <div className="websiteOverlay">
+          <Website />
         </div>
       )}
 
