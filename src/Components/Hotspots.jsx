@@ -19,17 +19,17 @@ export default function Hotspots({ setActiveHotspot }) {
   const hotspots = [
     {
       name: "Projects",
-      position: [55, 2.5, 1.5],
+      position: [54, 2.5, -4.5],
       camPos: [55, 4, 8],
     },
     {
       name: "Skills",
-      position: [45, 1.8, -1.8],
+      position: [48, -0.8, -7.5],
       camPos: [48, 3, 8],
     },
     {
       name: "About",
-      position: [61, 7.5, -0.2],
+      position: [61, 7.5, -1.5],
       camPos: [52, 6, 10],
     },
   ];
