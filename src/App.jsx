@@ -78,11 +78,9 @@ export default function App() {
         />
         {/* ======== */}
 
-        {/* <Laptop
-          focusLaptop={focusLaptop}
-          onLaptopClick={() => setFocusLaptop(true)}
-        /> */}
+      
         <Laptop
+          explore={explore}
           focusLaptop={focusLaptop}
           onLaptopClick={() => setFocusLaptop(true)}
         />
