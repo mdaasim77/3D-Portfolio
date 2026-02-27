@@ -154,16 +154,7 @@ canvas {
 
 /* =============== */
 
-/* .websiteOverlay {
-  position: fixed;
-  inset: 0;
-  background: white;
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 0.8s ease;
-} */
+
 .websiteOverlay {
   position: fixed;
   inset: 0;
@@ -198,15 +189,7 @@ canvas {
   color: white;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
-/* 
-.frame {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 40px;
-} */
+
 .frame {
   min-height: 100vh;
   display: flex;
