@@ -188,15 +188,7 @@ canvas {
   color: white;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
-/* 
-.frame {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 40px;
-} */
+
 .frame {
   min-height: 100vh;
   display: flex;
@@ -230,4 +222,27 @@ canvas {
 .finalFrame p {
   font-size: 90px;
   font-weight: 700;
+}
+
+/* ============hotspot=========== */
+
+.hotspotLabel {
+  background: white;
+  color: black;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.hotspotCard {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 280px;
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 9999;
 }
