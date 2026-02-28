@@ -10,7 +10,7 @@ import Hotspots from "./Components/Hotspots";
 import HotspotInfo from "./Ui/HotspotInfo";
 
 export default function App() {
-  // const [start, setStart] = useState(false);
+  const [start, setStart] = useState(false);
   const [explore, setExplore] = useState(false);
   const [focusLaptop, setFocusLaptop] = useState(false);
   const [enterWebsite, setEnterWebsite] = useState(false);
