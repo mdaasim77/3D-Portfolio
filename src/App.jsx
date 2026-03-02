@@ -90,15 +90,6 @@ export default function App() {
 
         {/* ======== */}
 
-        {/* {explore && !focusLaptop && (
-          <OrbitControls
-            target={[52, 2, 0]}
-            enablePan={false}
-            minDistance={5}
-            maxDistance={120}
-          />
-        )} */}
-
         {explore && !focusLaptop && !activeHotspot && (
           <OrbitControls
             target={[52, 2, 0]}
