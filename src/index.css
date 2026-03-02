@@ -225,7 +225,7 @@ canvas {
 }
 
 /* ============hotspot=========== */
-
+/* 
 .hotspotLabel {
   background: white;
   color: black;
@@ -245,4 +245,27 @@ canvas {
   padding: 20px;
   border-radius: 12px;
   z-index: 9999;
+} */
+ .hotspotLabel {
+  background: white;
+  color: black;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* Floating info panel */
+.hotspotCard {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 300px;
+  background: white;
+  color: black;
+  padding: 22px;
+  border-radius: 14px;
+  z-index: 9999;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
