@@ -1,23 +1,63 @@
+// import { Html } from "@react-three/drei";
+// import { useEffect, useState } from "react";
+
+// export default function LaptopScreen({ focusLaptop }) {
+//   const [showScreen, setShowScreen] = useState(false);
+
+//   useEffect(() => {
+//     if (!focusLaptop) {
+//       setShowScreen(false);
+//       return;
+//     }
+
+//     const timer = setTimeout(() => {
+//       setShowScreen(true);
+//     }, 2000);
+
+//     return () => clearTimeout(timer);
+//   }, [focusLaptop]);
+
+//   if (!showScreen) return null;
+
+//   return (
+//     <Html
+//       transform
+//       occlude
+//       distanceFactor={1.17}
+//       position={[52.2, 2.25, -0.05]}
+//       rotation={[0, -0.44, 0]}
+//     >
+//       <div
+//         style={{
+//           width: "1024px",
+//           height: "640px",
+//           background: "white",
+//           borderRadius: "18px",
+//           overflow: "hidden",
+//         }}
+//       >
+//         <h1 style={{ textAlign: "center", marginTop: "40%" }}>My Portfolio</h1>
+//       </div>
+//     </Html>
+//   );
+// }
+
+
 import { Html } from "@react-three/drei";
-import { useEffect, useState } from "react";
 
-export default function LaptopScreen({ focusLaptop }) {
-  const [showScreen, setShowScreen] = useState(false);
+export default function LaptopScreen({ activeHotspot }) {
+  if (!activeHotspot) return null;
 
-  useEffect(() => {
-    if (!focusLaptop) {
-      setShowScreen(false);
-      return;
-    }
+  const data = {
+    Projects:
+      "A collection of my best interactive and production-ready projects.",
 
-    const timer = setTimeout(() => {
-      setShowScreen(true);
-    }, 2000);
+    Skills:
+      "React, Three.js, GSAP, WebGL and performance-focused development.",
 
-    return () => clearTimeout(timer);
-  }, [focusLaptop]);
-
-  if (!showScreen) return null;
+    About:
+      "Creative front-end developer building immersive web experiences.",
+  };
 
   return (
     <Html
@@ -33,10 +73,12 @@ export default function LaptopScreen({ focusLaptop }) {
           height: "640px",
           background: "white",
           borderRadius: "18px",
-          overflow: "hidden",
+          padding: "40px",
+          color: "black",
         }}
       >
-        <h1 style={{ textAlign: "center", marginTop: "40%" }}>My Portfolio</h1>
+        <h1>{activeHotspot}</h1>
+        <p>{data[activeHotspot]}</p>
       </div>
     </Html>
   );
