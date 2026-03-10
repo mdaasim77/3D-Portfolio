@@ -9,21 +9,28 @@ export default function HotspotInfo({ name, onBack }) {
     gsap.fromTo(
       cardRef.current,
       { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
     );
   }, [name]);
 
   const data = {
-    Projects: "A collection of my best interactive and production-ready projects.",
-    Skills: "React, Three.js, GSAP, WebGL, UI/UX and performance-focused development.",
+    Projects:
+      "A collection of my best interactive and production-ready projects.",
+    Skills:
+      "React, Three.js, GSAP, WebGL, UI/UX and performance-focused development.",
     About: "Creative front-end developer building immersive web experiences.",
   };
 
   return (
     <div ref={cardRef} className="hotspotCard">
-      <button className="backBtn" onClick={onBack}>Back</button>
-      <h2>{name}</h2>
-      <p>{data[name]}</p>
+      {/* header row with title + back button side by side */}
+      <div className="cardHeader">
+        <h2 className="cardTitle">{name}</h2>
+        <button className="backBtn" onClick={onBack}>
+          Back
+        </button>
+      </div>
+      <p className="cardText">{data[name]}</p>
     </div>
   );
 }
