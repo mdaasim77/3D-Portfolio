@@ -8,6 +8,7 @@ import Hero from "./Ui/Hero";
 import Website from "./Scenes/Website";
 import Hotspots from "./Components/Hotspots";
 import LaptopScreen from "./Ui/LaptopScreen";
+import HotspotInfo from "./Ui/HotspotInfo";
 
 export default function App() {
   const [start, setStart] = useState(false);
