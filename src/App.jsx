@@ -7,7 +7,6 @@ import CameraController from "./Components/CameraController";
 import Hero from "./Ui/Hero";
 import Website from "./Scenes/Website";
 import Hotspots from "./Components/Hotspots";
-import LaptopScreen from "./Ui/LaptopScreen";
 import HotspotInfo from "./Ui/HotspotInfo";
 
 export default function App() {
@@ -86,8 +85,6 @@ export default function App() {
           focusLaptop={focusLaptop}
           onLaptopClick={() => setFocusLaptop(true)}
         />
-
-        {/* <LaptopScreen activeHotspot={activeHotspot} /> */}
 
         {explore && !focusLaptop && (
           <Hotspots

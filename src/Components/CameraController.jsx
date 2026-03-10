@@ -20,7 +20,7 @@ export default function CameraController({
   }, []);
 
   useEffect(() => {
-    if (!start || hotspotActive) return; 
+    if (!start || hotspotActive) return;
     camera.position.set(50, 2, 4);
     camera.lookAt(lookX, lookY, lookZ);
     gsap.to(camera.position, {

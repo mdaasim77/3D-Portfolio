@@ -69,7 +69,6 @@ export default function Hotspots({
       0,
     );
 
-    // tl.call(() => setActiveHotspot(spot.name));
     tl.call(() =>
       setActiveHotspot({ name: spot.name, cardPosition: spot.cardPosition }),
     );
@@ -81,7 +80,7 @@ export default function Hotspots({
       camPos: [75, 12, 45],
       lookTarget: [54, 4, 0],
       fov: 45,
-      cardPosition: { right: "40px", bottom: "40px" }, // ← add this
+      cardPosition: { right: "40px", bottom: "40px" }, 
     },
     {
       name: "Projects",
@@ -89,7 +88,7 @@ export default function Hotspots({
       camPos: [45, 8, 25],
       lookTarget: [52, 2, 0],
       fov: 35,
-      cardPosition: { left: "40px", bottom: "40px" }, // ← different position
+      cardPosition: { left: "40px", bottom: "40px" }, 
     },
     {
       name: "Skills",
@@ -97,7 +96,7 @@ export default function Hotspots({
       camPos: [10, 8, 25],
       lookTarget: [52, 2, 0],
       fov: 35,
-      cardPosition: { left: "40px", top: "40px" }, // ← different position
+      cardPosition: { left: "40px", top: "40px" }, 
     },
   ];
 
