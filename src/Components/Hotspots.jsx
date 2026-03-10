@@ -69,35 +69,35 @@ export default function Hotspots({
       0,
     );
 
-    tl.call(() => setActiveHotspot(spot.name));
+    // tl.call(() => setActiveHotspot(spot.name));
+    tl.call(() =>
+      setActiveHotspot({ name: spot.name, cardPosition: spot.cardPosition }),
+    );
   };
-
   const hotspots = [
     {
-      // name: "About",
-      // position: [61, 7.5, -1.5],
-      // camPos: [30, 10, 40],
-      // lookTarget: [54, 4, 0],
-      // fov: 45,
       name: "About",
       position: [61, 7.5, -1.5],
       camPos: [75, 12, 45],
       lookTarget: [54, 4, 0],
       fov: 45,
+      cardPosition: { right: "40px", bottom: "40px" }, // ← add this
     },
     {
       name: "Projects",
       position: [54, 2.5, -4.5],
-      camPos: [30, 8, 25],
+      camPos: [45, 8, 25],
       lookTarget: [52, 2, 0],
       fov: 35,
+      cardPosition: { left: "40px", bottom: "40px" }, // ← different position
     },
     {
       name: "Skills",
       position: [48, -0.8, -7.5],
-      camPos: [30, 8, 25],
+      camPos: [10, 8, 25],
       lookTarget: [52, 2, 0],
       fov: 35,
+      cardPosition: { left: "40px", top: "40px" }, // ← different position
     },
   ];
 

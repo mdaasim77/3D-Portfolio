@@ -42,7 +42,8 @@ export default function App() {
 
       {activeHotspot && (
         <HotspotInfo
-          name={activeHotspot}
+          name={activeHotspot.name}
+          cardPosition={activeHotspot.cardPosition}
           onBack={() => goBackRef.current?.()}
         />
       )}
