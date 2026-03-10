@@ -236,32 +236,18 @@ canvas {
   font-weight: 600;
 }
 
-/* Floating info panel */
-.hotspotCard {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  width: 300px;
-  background: white;
-  color: black;
-  padding: 22px;
-  border-radius: 14px;
-  z-index: 9999;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-/* ======backbtn======= */
-
 .hotspotCard {
   position: fixed;
   right: 40px;
   bottom: 40px;
   width: 280px;
-  background: white;
-  color: black;
+  background: #1a1a2e;   /* dark blue — easy to see */
+  color: white;
   padding: 20px;
   border-radius: 12px;
   z-index: 9999;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
 .backBtn {
@@ -271,6 +257,7 @@ canvas {
   border: none;
   padding: 6px 12px;
   cursor: pointer;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
+  border-radius: 4px;
 }

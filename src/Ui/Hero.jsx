@@ -33,7 +33,7 @@ export default function Hero({ onExplore }) {
         ease: "power3.out",
         delay: 3.6,
         onComplete: () => {
-          // start floating loop AFTER appear animation
+          if (!btnRef.current) return; // ← add this line
           floatAnim.current = gsap.to(btnRef.current, {
             y: "+=15",
             duration: 0.8,
