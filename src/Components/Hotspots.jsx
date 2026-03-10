@@ -74,9 +74,14 @@ export default function Hotspots({
 
   const hotspots = [
     {
+      // name: "About",
+      // position: [61, 7.5, -1.5],
+      // camPos: [30, 10, 40],
+      // lookTarget: [54, 4, 0],
+      // fov: 45,
       name: "About",
       position: [61, 7.5, -1.5],
-      camPos: [35, 12, 45],
+      camPos: [75, 12, 45],
       lookTarget: [54, 4, 0],
       fov: 45,
     },
@@ -115,7 +120,11 @@ function Hotspot({ spot, flyToHotspot }) {
   return (
     <group
       position={spot.position}
-      onClick={() => flyToHotspot(spot)}
+      // onClick={() => flyToHotspot(spot)}
+      onClick={(e) => {
+        e.stopPropagation();
+        flyToHotspot(spot);
+      }}
       onPointerEnter={() => (document.body.style.cursor = "pointer")}
       onPointerLeave={() => (document.body.style.cursor = "default")}
     >
