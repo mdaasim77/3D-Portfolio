@@ -74,9 +74,8 @@ canvas {
   justify-content: flex-start;
   padding-top: 6vh;
   pointer-events: none;
-  will-change: transform, opacity; /* ← smooth GSAP animation */
+  will-change: opacity, transform;
 }
-
 .heroTitle {
   font-size: 72px;
   color: white;
@@ -108,6 +107,7 @@ canvas {
   border: none;
   cursor: pointer;
   pointer-events: auto;
+  z-index: 6; /* ← above hero */
 }
 
 /* ========== Main Page ========== */

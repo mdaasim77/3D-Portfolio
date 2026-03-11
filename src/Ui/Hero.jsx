@@ -1,5 +1,5 @@
-// import { useRef, useEffect } from "react";
-// import gsap from "gsap";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
 
 // export default function Hero({ onExplore }) {
 //   const titleRef = useRef();
@@ -9,21 +9,16 @@
 //   const floatAnim = useRef();
 
 //   useEffect(() => {
-//     // Title drop
 //     gsap.fromTo(
 //       titleRef.current,
 //       { y: -80, opacity: 0 },
 //       { y: 0, opacity: 1, duration: 1.6, ease: "power3.out", delay: 2.8 },
 //     );
-
-//     // Subtitle fade
 //     gsap.fromTo(
 //       subRef.current,
 //       { y: -40, opacity: 0 },
 //       { y: 0, opacity: 1, duration: 1.6, ease: "power3.out", delay: 3.2 },
 //     );
-
-//     // Button appear
 //     gsap.fromTo(
 //       btnRef.current,
 //       { y: 80, opacity: 0 },
@@ -46,20 +41,31 @@
 //       },
 //     );
 
-//     // ← ADD THIS: hide/show hero on scroll
+//     // const handleScroll = () => {
+//     //   const scrollY = window.scrollY || document.documentElement.scrollTop;
+//     //   const progress = Math.min(scrollY / 300, 1);
+
+//     //   gsap.to(heroRef.current, {
+//     //     x: `${progress * 60}vw`,
+//     //     opacity: 1 - progress,
+//     //     duration: 0.1,
+//     //     ease: "none",
+//     //   });
+//     // };
 //     const handleScroll = () => {
-//       if (window.scrollY > 50) {
-//         gsap.to(heroRef.current, {
-//           opacity: 0,
-//           duration: 0.3,
-//           pointerEvents: "none",
-//         });
-//       } else {
-//         gsap.to(heroRef.current, {
-//           opacity: 1,
-//           duration: 0.3,
-//           pointerEvents: "auto",
-//         });
+//       const scrollY = window.scrollY || document.documentElement.scrollTop;
+//       const progress = Math.min(scrollY / 200, 1);
+
+//       gsap.to(heroRef.current, {
+//         opacity: 1 - progress,
+//         y: -progress * 40, // slight upward movement
+//         duration: 0.1,
+//         ease: "none",
+//       });
+
+//       // disable pointer events when hidden
+//       if (heroRef.current) {
+//         heroRef.current.style.pointerEvents = progress >= 1 ? "none" : "auto";
 //       }
 //     };
 
@@ -74,8 +80,6 @@
 
 //   return (
 //     <section ref={heroRef} className="hero">
-//       {" "}
-//       {/* ← add ref here */}
 //       <h1 ref={titleRef} className="heroTitle">
 //         Smart AI Workspace
 //       </h1>
@@ -89,12 +93,7 @@
 //     </section>
 //   );
 // }
-
-
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
-
-export default function Hero({ onExplore }) {
+export default function Hero({ onExplore, scrollRef }) {
   const titleRef = useRef();
   const subRef = useRef();
   const btnRef = useRef();
@@ -124,19 +123,25 @@ export default function Hero({ onExplore }) {
     );
 
     const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      // ← use document.documentElement.scrollTop OR scrollRef
+      const scrollY = document.documentElement.scrollTop || document.body.scrollTop;
       const progress = Math.min(scrollY / 300, 1);
 
       gsap.to(heroRef.current, {
-        x: `${progress * 60}vw`,
         opacity: 1 - progress,
+        y: -progress * 40,
         duration: 0.1,
         ease: "none",
       });
+
+      if (heroRef.current) {
+        heroRef.current.style.pointerEvents = progress >= 1 ? "none" : "auto";
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // ← listen on document, not window
+    document.addEventListener("scroll", handleScroll);
+    return () => document.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleExplore = () => {
