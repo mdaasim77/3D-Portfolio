@@ -74,6 +74,7 @@ canvas {
   justify-content: flex-start;
   padding-top: 6vh;
   pointer-events: none;
+  will-change: transform, opacity; /* ← smooth GSAP animation */
 }
 
 .heroTitle {
@@ -114,18 +115,20 @@ canvas {
   width: 100%;
 }
 
+/* ← KEY FIX: canvas stays behind, products scroll over it */
 .canvasWrapper {
   width: 100%;
   height: 100vh;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 0; /* ← behind everything */
 }
 
 /* ========== Products Scroll ========== */
+/* ← KEY FIX: transparent + only left half */
 .productsScroll {
-  background: black;
-  width: 100%;
+  background: transparent; /* ← was black, now transparent so canvas shows */
+  width: 45%; /* ← only left half of screen */
   position: relative;
   z-index: 2;
 }
@@ -136,9 +139,8 @@ canvas {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 80px;
+  padding: 0 60px;
   color: white;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
   gap: 16px;
 }
 
@@ -307,7 +309,7 @@ canvas {
   }
 }
 
-/* ========== Product Section (Website) ========== */
+/* ========== Product Section (Website Overlay) ========== */
 .productSection {
   position: relative;
   width: 100vw;
