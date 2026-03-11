@@ -39,7 +39,7 @@ export default function App() {
         <Hero onExplore={() => setExplore(true)} />
       )}
 
-      {activeHotspot && (
+      {activeHotspot && !focusLaptop && !enterWebsite && (
         <HotspotInfo
           name={activeHotspot.name}
           cardPosition={activeHotspot.cardPosition}
@@ -83,9 +83,11 @@ export default function App() {
         <Laptop
           explore={explore}
           focusLaptop={focusLaptop}
-          onLaptopClick={() => setFocusLaptop(true)}
+          onLaptopClick={() => {
+            setFocusLaptop(true);
+            setActiveHotspot(null); // ← add this
+          }}
         />
-
         {explore && !focusLaptop && (
           <Hotspots
             setActiveHotspot={setActiveHotspot}
