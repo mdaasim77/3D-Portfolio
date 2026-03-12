@@ -18,7 +18,8 @@ const products = [
     id: 2,
     name: "AirPods Max",
     price: "$549",
-    description: "High-fidelity audio. Active noise cancellation. All day comfort.",
+    description:
+      "High-fidelity audio. Active noise cancellation. All day comfort.",
     model: "/src/assets/models/airpods_max.glb",
   },
   {
@@ -30,24 +31,24 @@ const products = [
   },
   {
     id: 4,
-    name: "Airpods",
-    price: "$499",
+    name: "Apple Watch",
+    price: "$699",
     description: "Your third product description goes here.",
-    model: "/src/assets/models/product.glb",
+    model: "/src/assets/models/watch.glb",
   },
   {
     id: 5,
-    name: "Airpods",
-    price: "$499",
+    name: "Apple Ipad",
+    price: "$799",
     description: "Your third product description goes here.",
-    model: "/src/assets/models/product.glb",
+    model: "/src/assets/models/ipad.glb",
   },
   {
     id: 6,
-    name: "Airpods",
-    price: "$499",
+    name: "Apple Iphone",
+    price: "$1299",
     description: "Your third product description goes here.",
-    model: "/src/assets/models/product.glb",
+    model: "/src/assets/models/iphone.glb",
   },
 ];
 
@@ -67,14 +68,17 @@ function ProductSection({ product, index, scrollerRef }) {
       overlayRef.current,
       { y: 60, opacity: 0 },
       {
-        y: 0, opacity: 1, duration: 1.2, ease: "power3.out",
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: overlayRef.current.closest(".productSection"),
           scroller: scroller,
           start: "top 60%",
           toggleActions: "play none none reverse",
         },
-      }
+      },
     );
   }, []);
 
@@ -117,7 +121,12 @@ export default function Website({ scrollerRef }) {
         return scroller.scrollTop;
       },
       getBoundingClientRect() {
-        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
       },
     });
 
