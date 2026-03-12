@@ -1,11 +1,12 @@
+
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, OrbitControls, Environment } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-function ProductModel({ path }) {
+function ProductModel({ path, scale }) {
   const { scene } = useGLTF(path);
-  return <primitive object={scene} scale={0.5} position={[0, 0, 0]} />;
+  return <primitive object={scene} scale={scale} position={[0, 0, 0]} />;
 }
 
 export default function ProductDetail({ product, onBack }) {
@@ -13,7 +14,6 @@ export default function ProductDetail({ product, onBack }) {
   const infoRef = useRef();
 
   useEffect(() => {
-    // page slides up on enter
     gsap.fromTo(
       pageRef.current,
       { y: "100%", opacity: 0 },
@@ -38,18 +38,17 @@ export default function ProductDetail({ product, onBack }) {
 
   return (
     <div ref={pageRef} className="productDetail">
-      {/* Back Button */}
       <button className="productDetailBack" onClick={handleBack}>
         ← Back
       </button>
 
-      {/* 3D Model - full screen */}
       <div className="productDetailCanvas">
         <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
           <ambientLight intensity={0.6} />
           <directionalLight position={[5, 5, 5]} intensity={1.2} />
           <Environment preset="city" />
-          <ProductModel path={product.model} />
+          <ProductModel path={product.model} scale={product.scale} />{" "}
+          {/* ← use scale */}
           <OrbitControls
             enablePan={false}
             minDistance={2}
@@ -60,7 +59,6 @@ export default function ProductDetail({ product, onBack }) {
         </Canvas>
       </div>
 
-      {/* Product Info */}
       <div ref={infoRef} className="productDetailInfo">
         <span className="productNumber">0{product.id}</span>
         <h1 className="productDetailName">{product.name}</h1>
