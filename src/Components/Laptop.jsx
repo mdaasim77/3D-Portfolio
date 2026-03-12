@@ -1,4 +1,3 @@
-
 // import { useGLTF } from "@react-three/drei";
 // import { useRef } from "react";
 // import { useFrame } from "@react-three/fiber";
@@ -39,29 +38,52 @@
 //     />
 //   );
 // }
-
 import { useGLTF } from "@react-three/drei";
 import { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import gsap from "gsap";
 
-export default function Laptop({ onLaptopClick, focusLaptop, explore, productsVisible }) {
+export default function Laptop({
+  onLaptopClick,
+  focusLaptop,
+  explore,
+  productsVisible,
+}) {
   const model = useGLTF("/src/assets/models/laptop.glb");
   const laptopRef = useRef();
 
   const basePosition = [52.2, -2.3, 0];
   const baseRotation = [0, -0.44, 0];
 
-  // ← hide/show laptop when products visible
+  // ← correct way to hide a GLB model
   useEffect(() => {
     if (!laptopRef.current) return;
-    gsap.to(laptopRef.current, {
-      opacity: productsVisible ? 0 : 1,
-      duration: 0.6,
+
+    laptopRef.current.traverse((child) => {
+      if (child.isMesh) {
+        child.material = child.material.clone(); // avoid shared material issue
+        child.material.transparent = true;
+
+        // animate opacity manually
+        const targetOpacity = productsVisible ? 0 : 1;
+        const startOpacity = child.material.opacity;
+        const duration = 30; // frames
+        let frame = 0;
+
+        const animate = () => {
+          frame++;
+          const progress = frame / duration;
+          child.material.opacity =
+            startOpacity + (targetOpacity - startOpacity) * progress;
+          if (frame < duration) requestAnimationFrame(animate);
+        };
+
+        animate();
+      }
     });
   }, [productsVisible]);
 
   useFrame((state) => {
+    if (!laptopRef.current) return;
     if (explore || focusLaptop) {
       laptopRef.current.position.set(...basePosition);
       laptopRef.current.rotation.set(...baseRotation);
