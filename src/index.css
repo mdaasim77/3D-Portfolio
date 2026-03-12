@@ -113,24 +113,26 @@ canvas {
 /* ========== Main Page ========== */
 .mainPage {
   width: 100%;
+  position: relative;
 }
-
 /* ← KEY FIX: canvas stays behind, products scroll over it */
 .canvasWrapper {
   width: 100%;
   height: 100vh;
   position: sticky;
   top: 0;
-  z-index: 0; /* ← behind everything */
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* ========== Products Scroll ========== */
 /* ← KEY FIX: transparent + only left half */
 .productsScroll {
-  background: transparent; /* ← was black, now transparent so canvas shows */
-  width: 45%; /* ← only left half of screen */
+  background: transparent;
+  width: 45%;
   position: relative;
-  z-index: 2;
+  z-index: 3; /* ← above canvas */
+  pointer-events: auto;
 }
 
 .productScrollSection {
@@ -142,8 +144,9 @@ canvas {
   padding: 0 60px;
   color: white;
   gap: 16px;
+  position: relative;
+  z-index: 3;
 }
-
 .productNumber {
   font-size: 13px;
   opacity: 0.4;
