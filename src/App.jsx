@@ -8,39 +8,50 @@
 // import Website from "./Scenes/Website";
 // import Hotspots from "./Components/Hotspots";
 // import HotspotInfo from "./Ui/HotspotInfo";
+// import ProductDetail from "./Ui/ProductDetail"; // ← new
 
-// function Products() {
-//   const products = [
-//     {
-//       id: 1,
-//       name: "Apple MacBook Pro",
-//       price: "$1,999",
-//       description:
-//         "Next-generation performance. M3 chip. All day battery life.",
-//     },
-//     {
-//       id: 2,
-//       name: "AirPods Max",
-//       price: "$549",
-//       description: "High-fidelity audio. Active noise cancellation.",
-//     },
-//     {
-//       id: 3,
-//       name: "Product Three",
-//       price: "$499",
-//       description: "Your third product description goes here.",
-//     },
-//   ];
+// const PRODUCTS = [
+//   {
+//     id: 1,
+//     name: "Apple MacBook Pro",
+//     price: "$1,999",
+//     description: "Next-generation performance. M3 chip. All day battery life.",
+//     model: "/src/assets/models/macbook.glb",
+//   },
+//   {
+//     id: 2,
+//     name: "AirPods Max",
+//     price: "$549",
+//     description:
+//       "High-fidelity audio. Active noise cancellation. All day comfort.",
+//     model: "/src/assets/models/airpods_max.glb",
+//   },
+//   {
+//     id: 3,
+//     name: "Product Three",
+//     price: "$499",
+//     description: "Your third product description goes here.",
+//     model: "/src/assets/models/product.glb",
+//   },
+// ];
 
+// function Products({ onViewDetails }) {
 //   return (
 //     <div className="productsScroll">
-//       {products.map((p, i) => (
+//       {PRODUCTS.map((p, i) => (
 //         <div key={p.id} className="productScrollSection">
-//           <span className="productNumber">0{i + 1}</span>
-//           <h2 className="productName">{p.name}</h2>
-//           <p className="productDesc">{p.description}</p>
-//           <span className="productPrice">{p.price}</span>
-//           <button className="productBtn">View Details</button>
+//           <div className="productInfo">
+//             <span className="productNumber">0{i + 1}</span>
+//             <h2 className="productName">{p.name}</h2>
+//             <p className="productDesc">{p.description}</p>
+//             <span className="productPrice">{p.price}</span>
+//             <button
+//               className="productBtn"
+//               onClick={() => onViewDetails(p)} // ← pass product
+//             >
+//               View Details
+//             </button>
+//           </div>
 //         </div>
 //       ))}
 //     </div>
@@ -53,7 +64,8 @@
 //   const [focusLaptop, setFocusLaptop] = useState(false);
 //   const [enterWebsite, setEnterWebsite] = useState(false);
 //   const [activeHotspot, setActiveHotspot] = useState(null);
-//   const [productsVisible, setProductsVisible] = useState(false); // ← new
+//   const [productsVisible, setProductsVisible] = useState(false);
+//   const [selectedProduct, setSelectedProduct] = useState(null); // ← new
 
 //   const overlayRef = useRef(null);
 //   const goBackRef = useRef(null);
@@ -119,7 +131,7 @@
 //             <Laptop
 //               explore={explore}
 //               focusLaptop={focusLaptop}
-//               productsVisible={productsVisible} // ← new
+//               productsVisible={productsVisible}
 //               onLaptopClick={() => {
 //                 setFocusLaptop(true);
 //                 setActiveHotspot(null);
@@ -144,8 +156,16 @@
 //             )}
 //           </Canvas>
 //         </div>
-//         <Products />
+//         <Products onViewDetails={setSelectedProduct} /> {/* ← pass handler */}
 //       </div>
+
+//       {/* Product Detail Page */}
+//       {selectedProduct && (
+//         <ProductDetail
+//           product={selectedProduct}
+//           onBack={() => setSelectedProduct(null)}
+//         />
+//       )}
 
 //       {enterWebsite && (
 //         <div ref={overlayRef} className="websiteOverlay">
@@ -155,6 +175,7 @@
 //     </>
 //   );
 // }
+
 import { Canvas } from "@react-three/fiber";
 import { Environment, Stars, OrbitControls } from "@react-three/drei";
 import Laptop from "./Components/Laptop";
@@ -165,7 +186,7 @@ import Hero from "./Ui/Hero";
 import Website from "./Scenes/Website";
 import Hotspots from "./Components/Hotspots";
 import HotspotInfo from "./Ui/HotspotInfo";
-import ProductDetail from "./Ui/ProductDetail"; // ← new
+import ProductDetail from "./Ui/ProductDetail";
 
 const PRODUCTS = [
   {
@@ -185,32 +206,75 @@ const PRODUCTS = [
   },
   {
     id: 3,
-    name: "Product Three",
-    price: "$499",
-    description: "Your third product description goes here.",
+    name: "iPhone 15 Pro",
+    price: "$999",
+    description: "Titanium design. A17 Pro chip. Pro camera system.",
+    model: "/src/assets/models/iphone.glb",
+  },
+  {
+    id: 4,
+    name: "Apple Watch Ultra",
+    price: "$799",
+    description: "Most rugged Apple Watch. Precision dual-frequency GPS.",
+    model: "/src/assets/models/watch.glb",
+  },
+  {
+    id: 5,
+    name: "iPad Pro",
+    price: "$1,099",
+    description: "M2 chip. Liquid Retina XDR display. All-day battery.",
+    model: "/src/assets/models/ipad.glb",
+  },
+  {
+    id: 6,
+    name: "Mac Studio",
+    price: "$1,999",
+    description: "M2 Max chip. Incredible performance in a compact design.",
     model: "/src/assets/models/product.glb",
   },
 ];
+
+function ProductCard({ p, i, onViewDetails }) {
+  const cardRef = useRef();
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={cardRef} className="productScrollSection">
+      <div className="productInfo">
+        <span className="productNumber">0{i + 1}</span>
+        <h2 className="productName">{p.name}</h2>
+        <p className="productDesc">{p.description}</p>
+        <span className="productPrice">{p.price}</span>
+        <button className="productBtn" onClick={() => onViewDetails(p)}>
+          View Details
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function Products({ onViewDetails }) {
   return (
     <div className="productsScroll">
       {PRODUCTS.map((p, i) => (
-        <div key={p.id} className="productScrollSection">
-          <div className="productInfo">
-            <span className="productNumber">0{i + 1}</span>
-            <h2 className="productName">{p.name}</h2>
-            <p className="productDesc">{p.description}</p>
-            <span className="productPrice">{p.price}</span>
-            <button
-              className="productBtn"
-              onClick={() => onViewDetails(p)} // ← pass product
-            >
-              View Details
-            </button>
-          </div>
-        
-        </div>
+        <ProductCard key={p.id} p={p} i={i} onViewDetails={onViewDetails} />
       ))}
     </div>
   );
@@ -223,7 +287,7 @@ export default function App() {
   const [enterWebsite, setEnterWebsite] = useState(false);
   const [activeHotspot, setActiveHotspot] = useState(null);
   const [productsVisible, setProductsVisible] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null); // ← new
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const overlayRef = useRef(null);
   const goBackRef = useRef(null);
@@ -314,10 +378,9 @@ export default function App() {
             )}
           </Canvas>
         </div>
-        <Products onViewDetails={setSelectedProduct} /> {/* ← pass handler */}
+        <Products onViewDetails={setSelectedProduct} />
       </div>
 
-      {/* Product Detail Page */}
       {selectedProduct && (
         <ProductDetail
           product={selectedProduct}
