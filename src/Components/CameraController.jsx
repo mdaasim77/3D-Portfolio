@@ -1,3 +1,68 @@
+// import { useThree } from "@react-three/fiber";
+// import { useLayoutEffect, useEffect } from "react";
+// import gsap from "gsap";
+
+// export default function CameraController({
+//   start,
+//   explore,
+//   focusLaptop,
+//   hotspotActive,
+// }) {
+//   const { camera } = useThree();
+
+//   const lookX = 52;
+//   const lookY = 2;
+//   const lookZ = 0;
+
+//   useLayoutEffect(() => {
+//     camera.position.set(50, 2, 4);
+//     camera.lookAt(lookX, lookY, lookZ);
+//   }, []);
+
+//   useEffect(() => {
+//     if (!start || hotspotActive) return;
+//     camera.position.set(50, 2, 4);
+//     camera.lookAt(lookX, lookY, lookZ);
+//     gsap.to(camera.position, {
+//       x: 10,
+//       y: 10,
+//       z: 80,
+//       duration: 5,
+//       ease: "power3.inOut",
+//       onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
+//     });
+//   }, [start]);
+
+//   useEffect(() => {
+//     if (!explore || hotspotActive) return; // ← block if hotspot active
+//     gsap.to(camera.position, {
+//       x: 0,
+//       y: 25,
+//       z: 140,
+//       duration: 4,
+//       ease: "power3.inOut",
+//       onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
+//     });
+//   }, [explore]);
+
+//   useEffect(() => {
+//     if (!focusLaptop) return;
+//     gsap.to(camera.position, {
+//       x: 50,
+//       y: 2,
+//       z: 4,
+//       duration: 2.5,
+//       ease: "power3.inOut",
+//       onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
+//       onComplete: () => {
+//         if (onFocusComplete) onFocusComplete(); // ← call prop instead
+//       },
+//     });
+//   }, [focusLaptop]);
+
+//   return null;
+// }
+
 import { useThree } from "@react-three/fiber";
 import { useLayoutEffect, useEffect } from "react";
 import gsap from "gsap";
@@ -7,6 +72,7 @@ export default function CameraController({
   explore,
   focusLaptop,
   hotspotActive,
+  onFocusComplete,
 }) {
   const { camera } = useThree();
 
@@ -34,7 +100,7 @@ export default function CameraController({
   }, [start]);
 
   useEffect(() => {
-    if (!explore || hotspotActive) return; // ← block if hotspot active
+    if (!explore || hotspotActive) return;
     gsap.to(camera.position, {
       x: 0,
       y: 25,
@@ -55,7 +121,7 @@ export default function CameraController({
       ease: "power3.inOut",
       onUpdate: () => camera.lookAt(lookX, lookY, lookZ),
       onComplete: () => {
-        setTimeout(() => window.enterWebsite(), 300);
+        if (onFocusComplete) onFocusComplete();  // ← clean callback
       },
     });
   }, [focusLaptop]);
