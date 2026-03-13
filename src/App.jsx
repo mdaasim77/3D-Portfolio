@@ -9,7 +9,7 @@ import Website from "./Scenes/Website";
 import Hotspots from "./Components/Hotspots";
 import HotspotInfo from "./Ui/HotspotInfo";
 import ProductDetail from "./Ui/ProductDetail";
-import PRODUCTS from "./data/product";
+import PRODUCTS from "./data/products";
 
 function ProductCard({ p, i, onViewDetails }) {
   const cardRef = useRef();
