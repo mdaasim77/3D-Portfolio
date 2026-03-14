@@ -14,7 +14,7 @@ export default function Laptop({
   const basePosition = [52.2, -2.3, 0];
   const baseRotation = [0, -0.44, 0];
 
-  // ← correct way to hide a GLB model
+
   useEffect(() => {
     if (!laptopRef.current) return;
 
