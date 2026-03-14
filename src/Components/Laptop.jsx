@@ -20,7 +20,7 @@ export default function Laptop({
 
     laptopRef.current.traverse((child) => {
       if (child.isMesh) {
-        child.material = child.material.clone(); // avoid shared material issue
+        child.material = child.material.clone(); 
         child.material.transparent = true;
 
         // animate opacity manually
