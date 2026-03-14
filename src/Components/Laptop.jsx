@@ -11,8 +11,8 @@ export default function Laptop({
   const model = useGLTF("/models/laptop.glb");
   const laptopRef = useRef();
 
-  const basePosition = [52.2, -2.3, 0];
-  const baseRotation = [0, -0.44, 0];
+  // const basePosition = [52.2, -2.3, 0];
+  // const baseRotation = [0, -0.44, 0];
 
 
   useEffect(() => {
