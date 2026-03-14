@@ -14,13 +14,12 @@ export default function Laptop({
   const basePosition = [52.2, -2.3, 0];
   const baseRotation = [0, -0.44, 0];
 
-
   useEffect(() => {
     if (!laptopRef.current) return;
 
     laptopRef.current.traverse((child) => {
       if (child.isMesh) {
-        child.material = child.material.clone(); 
+        child.material = child.material.clone();
         child.material.transparent = true;
 
         // animate opacity manually
