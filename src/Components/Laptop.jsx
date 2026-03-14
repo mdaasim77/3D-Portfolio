@@ -27,7 +27,7 @@ export default function Laptop({
         const startOpacity = child.material.opacity;
         const duration = 30; // frames
         let frame = 0;
-//
+
         const animate = () => {
           frame++;
           const progress = frame / duration;
