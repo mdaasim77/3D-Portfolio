@@ -123,7 +123,7 @@ export default function App() {
               speed={1}
             />
             <Environment
-              files="/src/assets/hdr/space.hdr"
+              files="/hdr/space.hdr" 
               background
               backgroundIntensity={0.1}
               backgroundBlurriness={0.1}

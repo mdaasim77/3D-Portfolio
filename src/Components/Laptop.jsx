@@ -8,7 +8,7 @@ export default function Laptop({
   explore,
   productsVisible,
 }) {
-  const model = useGLTF("/src/assets/models/laptop.glb");
+  const model = useGLTF("/models/laptop.glb");
   const laptopRef = useRef();
 
   const basePosition = [52.2, -2.3, 0];
