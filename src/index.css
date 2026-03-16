@@ -576,3 +576,118 @@ canvas {
   opacity: 1;
   background: rgba(255, 255, 255, 0.15);
 }
+
+/* ========== Loading Screen ========== */
+.loadingScreen {
+  position: fixed;
+  inset: 0;
+  background: #05050f;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loadingContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.loadingTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.loadingTitleMain {
+  font-size: 52px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+.loadingTitleSub {
+  font-size: 16px;
+  color: #00ffcc;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.loadingBarWrapper {
+  width: 300px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loadingBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00ffcc, #00aaff);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.8);
+  transition: width 0.1s ease;
+}
+
+.loadingPercent {
+  font-size: 13px;
+  color: #00ffcc;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.loadingText {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+  animation: loadingTextPulse 2s infinite;
+}
+
+@keyframes loadingTextPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* corner decorations */
+.loadingCorner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(0, 255, 204, 0.4);
+  border-style: solid;
+}
+
+.loadingCornerTL {
+  top: 30px;
+  left: 30px;
+  border-width: 2px 0 0 2px;
+}
+.loadingCornerTR {
+  top: 30px;
+  right: 30px;
+  border-width: 2px 2px 0 0;
+}
+.loadingCornerBL {
+  bottom: 30px;
+  left: 30px;
+  border-width: 0 0 2px 2px;
+}
+.loadingCornerBR {
+  bottom: 30px;
+  right: 30px;
+  border-width: 0 2px 2px 0;
+}

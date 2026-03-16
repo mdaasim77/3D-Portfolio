@@ -10,6 +10,7 @@ import Hotspots from "./Components/Hotspots";
 import HotspotInfo from "./Ui/HotspotInfo";
 import ProductDetail from "./Ui/ProductDetail";
 import PRODUCTS from "./data/products";
+import LoadingScreen from "./Ui/LoadingScreen"; // ← new
 
 function ProductCard({ p, i, onViewDetails }) {
   const cardRef = useRef();
@@ -58,6 +59,7 @@ function Products({ onViewDetails }) {
 }
 
 export default function App() {
+  const [loading, setLoading] = useState(true); // ← new
   const [start, setStart] = useState(false);
   const [explore, setExplore] = useState(false);
   const [focusLaptop, setFocusLaptop] = useState(false);
@@ -70,8 +72,6 @@ export default function App() {
   const goBackRef = useRef(null);
   const mainPageRef = useRef(null);
 
-  // ← removed window.enterWebsite useEffect
-
   useEffect(() => {
     if (!start) {
       document.body.style.overflow = "hidden";
@@ -82,7 +82,10 @@ export default function App() {
 
   return (
     <>
-      {!start && <StartScreen onStart={() => setStart(true)} />}
+      {/* ← loading screen shows first */}
+      {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+
+      {!loading && !start && <StartScreen onStart={() => setStart(true)} />}
 
       {start && !explore && !focusLaptop && (
         <Hero
@@ -102,59 +105,62 @@ export default function App() {
 
       <div className="mainPage" ref={mainPageRef}>
         <div className="canvasWrapper">
-          <Canvas camera={{ position: [50, 36, 45], fov: 40 }}>
-            <CameraController
-              start={start}
-              explore={explore}
-              focusLaptop={focusLaptop}
-              onFocusComplete={() => {
-                setTimeout(() => setEnterWebsite(true), 300); // ← clean trigger
-              }}
-            />
-            <ambientLight intensity={0.3} />
-            <directionalLight position={[20, 10, 20]} intensity={1.5} />
-            <Stars
-              radius={80}
-              depth={50}
-              count={100000}
-              factor={4}
-              saturation={0}
-              fade
-              speed={1}
-            />
-            <Environment
-              files="/hdr/space.hdr" 
-              background
-              backgroundIntensity={0.1}
-              backgroundBlurriness={0.1}
-            />
-            <Laptop
-              explore={explore}
-              focusLaptop={focusLaptop}
-              productsVisible={productsVisible}
-              onLaptopClick={() => {
-                setFocusLaptop(true);
-                setActiveHotspot(null);
-              }}
-            />
-            {explore && !focusLaptop && (
-              <Hotspots
-                setActiveHotspot={setActiveHotspot}
-                onGoBack={(fn) => (goBackRef.current = fn)}
-                setFocusLaptop={setFocusLaptop}
-                setEnterWebsite={setEnterWebsite}
+          {/* ← only mount Canvas after loading complete */}
+          {!loading && (
+            <Canvas camera={{ position: [50, 36, 45], fov: 40 }}>
+              <CameraController
+                start={start}
+                explore={explore}
+                focusLaptop={focusLaptop}
+                onFocusComplete={() => {
+                  setTimeout(() => setEnterWebsite(true), 300);
+                }}
               />
-            )}
-            {explore && !focusLaptop && !activeHotspot && (
-              <OrbitControls
-                makeDefault
-                target={[52, 2, 0]}
-                enablePan={false}
-                minDistance={5}
-                maxDistance={120}
+              <ambientLight intensity={0.3} />
+              <directionalLight position={[20, 10, 20]} intensity={1.5} />
+              <Stars
+                radius={80}
+                depth={50}
+                count={100000}
+                factor={4}
+                saturation={0}
+                fade
+                speed={1}
               />
-            )}
-          </Canvas>
+              <Environment
+                files="/hdr/space.hdr"
+                background
+                backgroundIntensity={0.1}
+                backgroundBlurriness={0.1}
+              />
+              <Laptop
+                explore={explore}
+                focusLaptop={focusLaptop}
+                productsVisible={productsVisible}
+                onLaptopClick={() => {
+                  setFocusLaptop(true);
+                  setActiveHotspot(null);
+                }}
+              />
+              {explore && !focusLaptop && (
+                <Hotspots
+                  setActiveHotspot={setActiveHotspot}
+                  onGoBack={(fn) => (goBackRef.current = fn)}
+                  setFocusLaptop={setFocusLaptop}
+                  setEnterWebsite={setEnterWebsite}
+                />
+              )}
+              {explore && !focusLaptop && !activeHotspot && (
+                <OrbitControls
+                  makeDefault
+                  target={[52, 2, 0]}
+                  enablePan={false}
+                  minDistance={5}
+                  maxDistance={120}
+                />
+              )}
+            </Canvas>
+          )}
         </div>
         <Products onViewDetails={setSelectedProduct} />
       </div>
