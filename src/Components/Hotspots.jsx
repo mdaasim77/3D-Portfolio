@@ -1,3 +1,147 @@
+// import { Html } from "@react-three/drei";
+// import { useThree, useFrame } from "@react-three/fiber";
+// import { useRef, useEffect } from "react";
+// import gsap from "gsap";
+
+// export default function Hotspots({
+//   setActiveHotspot,
+//   onGoBack,
+//   setFocusLaptop,
+//   setEnterWebsite,
+// }) {
+//   const { camera } = useThree();
+
+//   const goBack = () => {
+//     // reset these so website doesn't reopen
+//     setFocusLaptop(false);
+//     setEnterWebsite(false);
+
+//     gsap.to(camera.position, {
+//       x: 0,
+//       y: 25,
+//       z: 140,
+//       duration: 2,
+//       ease: "power3.inOut",
+//       onUpdate: () => camera.lookAt(52, 2, 0),
+//     });
+//     gsap.to(camera, {
+//       fov: 40,
+//       duration: 2,
+//       onUpdate: () => camera.updateProjectionMatrix(),
+//     });
+//     setActiveHotspot(null);
+//   };
+
+//   useEffect(() => {
+//     onGoBack(goBack);
+//   }, []);
+
+//   // rest stays same...
+
+//   const flyToHotspot = (spot) => {
+//     const look = {
+//       x: spot.lookTarget[0],
+//       y: spot.lookTarget[1],
+//       z: spot.lookTarget[2],
+//     };
+
+//     const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
+
+//     tl.to(
+//       camera.position,
+//       {
+//         x: spot.camPos[0],
+//         y: spot.camPos[1],
+//         z: spot.camPos[2],
+//         duration: 2,
+//         onUpdate: () => camera.lookAt(look.x, look.y, look.z),
+//       },
+//       0,
+//     );
+
+//     tl.to(
+//       camera,
+//       {
+//         fov: spot.fov,
+//         duration: 2,
+//         onUpdate: () => camera.updateProjectionMatrix(),
+//       },
+//       0,
+//     );
+
+//     tl.call(() =>
+//       setActiveHotspot({ name: spot.name, cardPosition: spot.cardPosition }),
+//     );
+//   };
+//   const hotspots = [
+//     {
+//       name: "About",
+//       position: [61, 7.5, -1.5],
+//       camPos: [75, 12, 45],
+//       lookTarget: [54, 4, 0],
+//       fov: 45,
+//       cardPosition: { right: "40px", bottom: "40px" },
+//     },
+//     {
+//       name: "Projects",
+//       position: [54, 2.5, -4.5],
+//       camPos: [45, 8, 25],
+//       lookTarget: [52, 2, 0],
+//       fov: 35,
+//       cardPosition: { left: "40px", bottom: "40px" },
+//     },
+//     {
+//       name: "Skills",
+//       position: [48, -0.8, -7.5],
+//       camPos: [10, 8, 25],
+//       lookTarget: [52, 2, 0],
+//       fov: 35,
+//       cardPosition: { left: "40px", top: "40px" },
+//     },
+//   ];
+
+//   return hotspots.map((spot, i) => (
+//     <Hotspot key={i} spot={spot} flyToHotspot={flyToHotspot} />
+//   ));
+// }
+
+// function Hotspot({ spot, flyToHotspot }) {
+//   const glowRef = useRef();
+
+//   useFrame(({ clock }) => {
+//     const t = clock.getElapsedTime();
+//     const scale = 1 + Math.sin(t * 2) * 0.25;
+//     const opacity = 0.35 + Math.sin(t * 2) * 0.15;
+//     glowRef.current.scale.set(scale, scale, scale);
+//     glowRef.current.material.opacity = opacity;
+//   });
+
+//   return (
+//     <group
+//       position={spot.position}
+//       // onClick={() => flyToHotspot(spot)}
+//       onClick={(e) => {
+//         e.stopPropagation();
+//         flyToHotspot(spot);
+//       }}
+//       onPointerEnter={() => (document.body.style.cursor = "pointer")}
+//       onPointerLeave={() => (document.body.style.cursor = "default")}
+//     >
+//       <mesh ref={glowRef}>
+//         <sphereGeometry args={[0.9, 32, 32]} />
+//         <meshBasicMaterial color="#00ffff" transparent opacity={0.35} />
+//       </mesh>
+//       <mesh>
+//         <sphereGeometry args={[0.18, 32, 32]} />
+//         <meshBasicMaterial color="white" />
+//       </mesh>
+//       <Html distanceFactor={10}>
+//         <div className="hotspotLabel">{spot.name}</div>
+//       </Html>
+//     </group>
+//   );
+// }
+
 import { Html } from "@react-three/drei";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
@@ -12,7 +156,6 @@ export default function Hotspots({
   const { camera } = useThree();
 
   const goBack = () => {
-    // reset these so website doesn't reopen
     setFocusLaptop(false);
     setEnterWebsite(false);
 
@@ -35,8 +178,6 @@ export default function Hotspots({
   useEffect(() => {
     onGoBack(goBack);
   }, []);
-
-  // rest stays same...
 
   const flyToHotspot = (spot) => {
     const look = {
@@ -73,6 +214,7 @@ export default function Hotspots({
       setActiveHotspot({ name: spot.name, cardPosition: spot.cardPosition }),
     );
   };
+
   const hotspots = [
     {
       name: "About",
@@ -80,7 +222,7 @@ export default function Hotspots({
       camPos: [75, 12, 45],
       lookTarget: [54, 4, 0],
       fov: 45,
-      cardPosition: { right: "40px", bottom: "40px" }, 
+      cardPosition: { right: "40px", bottom: "40px" },
     },
     {
       name: "Projects",
@@ -88,7 +230,7 @@ export default function Hotspots({
       camPos: [45, 8, 25],
       lookTarget: [52, 2, 0],
       fov: 35,
-      cardPosition: { left: "40px", bottom: "40px" }, 
+      cardPosition: { left: "40px", bottom: "40px" },
     },
     {
       name: "Skills",
@@ -96,7 +238,7 @@ export default function Hotspots({
       camPos: [10, 8, 25],
       lookTarget: [52, 2, 0],
       fov: 35,
-      cardPosition: { left: "40px", top: "40px" }, 
+      cardPosition: { left: "40px", top: "40px" },
     },
   ];
 
@@ -107,19 +249,26 @@ export default function Hotspots({
 
 function Hotspot({ spot, flyToHotspot }) {
   const glowRef = useRef();
+  const coreRef = useRef();
+  const ringRef = useRef();
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
-    const scale = 1 + Math.sin(t * 2) * 0.25;
-    const opacity = 0.35 + Math.sin(t * 2) * 0.15;
+
+    // outer glow pulse
+    const scale = 1 + Math.sin(t * 2) * 0.3;
+    const opacity = 0.2 + Math.sin(t * 2) * 0.1;
     glowRef.current.scale.set(scale, scale, scale);
     glowRef.current.material.opacity = opacity;
+
+    // ring rotate
+    ringRef.current.rotation.z = t * 0.8;
+    ringRef.current.rotation.x = Math.sin(t * 0.5) * 0.3;
   });
 
   return (
     <group
       position={spot.position}
-      // onClick={() => flyToHotspot(spot)}
       onClick={(e) => {
         e.stopPropagation();
         flyToHotspot(spot);
@@ -127,15 +276,32 @@ function Hotspot({ spot, flyToHotspot }) {
       onPointerEnter={() => (document.body.style.cursor = "pointer")}
       onPointerLeave={() => (document.body.style.cursor = "default")}
     >
+      {/* outer glow sphere */}
       <mesh ref={glowRef}>
-        <sphereGeometry args={[0.9, 32, 32]} />
-        <meshBasicMaterial color="#00ffff" transparent opacity={0.35} />
+        <sphereGeometry args={[1.1, 32, 32]} />
+        <meshBasicMaterial color="#00ffcc" transparent opacity={0.15} />
       </mesh>
+
+      {/* rotating ring */}
+      <mesh ref={ringRef}>
+        <torusGeometry args={[0.7, 0.04, 16, 100]} />
+        <meshBasicMaterial color="#00ffcc" transparent opacity={0.8} />
+      </mesh>
+
+      {/* core dot */}
+      <mesh ref={coreRef}>
+        <sphereGeometry args={[0.22, 32, 32]} />
+        <meshBasicMaterial color="#ffffff" />
+      </mesh>
+
+      {/* inner glow */}
       <mesh>
-        <sphereGeometry args={[0.18, 32, 32]} />
-        <meshBasicMaterial color="white" />
+        <sphereGeometry args={[0.35, 32, 32]} />
+        <meshBasicMaterial color="#00ffcc" transparent opacity={0.3} />
       </mesh>
-      <Html distanceFactor={10}>
+
+      {/* label */}
+      <Html distanceFactor={10} center>
         <div className="hotspotLabel">{spot.name}</div>
       </Html>
     </group>

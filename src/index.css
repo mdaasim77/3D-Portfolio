@@ -223,7 +223,7 @@ canvas {
 }
 
 /* ========== Hotspot ========== */
-.hotspotLabel {
+/* .hotspotLabel {
   background: white;
   color: black;
   padding: 6px 10px;
@@ -231,6 +231,22 @@ canvas {
   border-radius: 6px;
   white-space: nowrap;
   font-weight: 600;
+} */
+.hotspotLabel {
+  background: rgba(0, 255, 204, 0.12);
+  color: #00ffcc;
+  padding: 5px 12px;
+  font-size: 11px;
+  border-radius: 20px;
+  white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 255, 204, 0.4);
+  backdrop-filter: blur(8px);
+  margin-top: 20px;
+  pointer-events: none;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.8);
 }
 .hotspotContainer {
   position: absolute;
