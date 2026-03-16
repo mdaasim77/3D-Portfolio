@@ -117,7 +117,7 @@ const PRODUCTS = [
     name: "Apple iPad",
     price: "$799",
     description: "M2 chip. Liquid Retina XDR display. All-day battery.",
-model: "/models/ipad.glb",
+    model: "/models/ipad.glb",
     scale: 2,
     hotspots: [
       {
