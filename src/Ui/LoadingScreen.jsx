@@ -25,13 +25,19 @@ export default function LoadingScreen({ onComplete }) {
         },
         onComplete: () => {
           // fade out loading screen
-          gsap.to(wrapperRef.current, {
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            delay: 0.3,
-            onComplete: () => onComplete(),
-          });
+
+          setTimeout(() => {
+            gsap.to(wrapperRef.current, {
+              opacity: 0,
+              duration: 0.8,
+              ease: "power2.out",
+              delay: 0.5, // ← increase delay
+              onComplete: () => {
+                // wait extra before removing so Canvas is ready
+                setTimeout(() => onComplete(), 300); // ← extra 300ms
+              },
+            });
+          }, 800); // ← was 0, now 800ms wait after 100%
         },
       },
     );
