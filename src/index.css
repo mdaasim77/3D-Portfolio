@@ -232,6 +232,11 @@ canvas {
   white-space: nowrap;
   font-weight: 600;
 }
+.hotspotContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
 
 .hotspotCard {
   position: fixed;
@@ -429,94 +434,129 @@ canvas {
   position: absolute;
   z-index: 10;
   transform: translate(-50%, -50%);
+  pointer-events: auto;
 }
 
 .hotspotDot {
-  width: 36px;
-  height: 36px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: rgba(0, 255, 204, 0.2);
-  border: 2px solid #00ffcc;
+  background: rgba(0, 255, 204, 0.08);
+  border: 2px solid rgba(0, 255, 204, 0.9);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   animation: hotspotPulse 2s infinite;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
-
+.hotspotDot:hover {
+  background: rgba(0, 255, 204, 0.2);
+  transform: scale(1.15);
+}
 .hotspotDotInner {
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #00ffcc;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.8);
 }
 
 .hotspotDotLabel {
   position: absolute;
-  top: -26px;
+  bottom: -28px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.85);
   color: #00ffcc;
   font-size: 11px;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
   white-space: nowrap;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(0, 255, 204, 0.3);
 }
 
 @keyframes hotspotPulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.4);
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.5);
   }
-  50% {
-    box-shadow: 0 0 0 10px rgba(0, 255, 204, 0);
+  70% {
+    box-shadow: 0 0 0 14px rgba(0, 255, 204, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 204, 0);
   }
 }
 
 .hotspotPopup {
   position: absolute;
-  top: 50px;
+  top: 65px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(5, 5, 20, 0.92);
-  border: 1px solid rgba(0, 255, 204, 0.3);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 16px;
-  width: 220px;
+  background: rgba(5, 5, 20, 0.95);
+  border: 1px solid rgba(0, 255, 204, 0.25);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 20px 20px 16px 20px;
+  width: 240px;
   color: white;
   z-index: 20;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 255, 204, 0.05);
+}
+/* ← teal top accent line */
+.hotspotPopup::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffcc, transparent);
+  border-radius: 2px;
 }
 
 .hotspotPopup h4 {
-  margin: 0 0 8px 0;
-  font-size: 14px;
+  margin: 0 0 10px 0;
+  font-size: 13px;
   color: #00ffcc;
   font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
-
 .hotspotPopup p {
   margin: 0;
   font-size: 13px;
-  opacity: 0.8;
-  line-height: 1.6;
+  opacity: 0.85;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .hotspotClose {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  background: transparent;
+  top: 10px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.08);
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 12px;
-  opacity: 0.6;
+  font-size: 11px;
+  opacity: 0.7;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hotspotClose:hover {
   opacity: 1;
+  background: rgba(255, 255, 255, 0.15);
 }
