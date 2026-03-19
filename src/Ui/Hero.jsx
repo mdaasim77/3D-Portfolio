@@ -76,9 +76,9 @@ export default function Hero({ onExplore, scrollRef, onProductsVisible }) {
         Experience productivity in a new dimension. Manage tasks and build
         faster.
       </p>
-      {/* <button ref={btnRef} className="heroBtn" onClick={handleExplore}>
+      <button ref={btnRef} className="heroBtn" onClick={handleExplore}>
         Explore Space
-      </button> */}
+      </button>
     </section>
   );
 }
