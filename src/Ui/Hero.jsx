@@ -62,10 +62,10 @@ export default function Hero({ onExplore, scrollRef, onProductsVisible }) {
     return () => observer.disconnect();
   }, []);
 
-  const handleExplore = () => {
-    floatAnim.current?.kill();
-    onExplore();
-  };
+  // const handleExplore = () => {
+  //   floatAnim.current?.kill();
+  //   onExplore();
+  // };
 
   return (
     <section ref={heroRef} className="hero">
