@@ -13,13 +13,13 @@ export default function HotspotInfo({ name, cardPosition, onBack }) {
     );
   }, [name]);
 
-  // const data = {
-  //   About: "Creative front-end developer building immersive web experiences.",
-  //   Projects:
-  //     "A collection of my best interactive and production-ready projects.",
-  //   Skills:
-  //     "React, Three.js, GSAP, WebGL, UI/UX and performance-focused development.",
-  // };
+  const data = {
+    About: "Creative front-end developer building immersive web experiences.",
+    Projects:
+      "A collection of my best interactive and production-ready projects.",
+    Skills:
+      "React, Three.js, GSAP, WebGL, UI/UX and performance-focused development.",
+  };
 
   return (
     <div ref={cardRef} className="hotspotCard" style={cardPosition}>
