@@ -68,17 +68,17 @@ export default function Hero({ onExplore, scrollRef, onProductsVisible }) {
   };
 
   return (
-    <section ref={heroRef} className="hero">
-      <h1 ref={titleRef} className="heroTitle">
-        Smart AI Workspace
-      </h1>
-      <p ref={subRef} className="heroSub">
-        Experience productivity in a new dimension. Manage tasks and build
-        faster.
-      </p>
-      <button ref={btnRef} className="heroBtn" onClick={handleExplore}>
-        Explore Space
-      </button>
-    </section>
+    // <section ref={heroRef} className="hero">
+    //   <h1 ref={titleRef} className="heroTitle">
+    //     Smart AI Workspace
+    //   </h1>
+    //   <p ref={subRef} className="heroSub">
+    //     Experience productivity in a new dimension. Manage tasks and build
+    //     faster.
+    //   </p>
+    //   <button ref={btnRef} className="heroBtn" onClick={handleExplore}>
+    //     Explore Space
+    //   </button>
+    // </section>
   );
 }
